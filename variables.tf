@@ -84,6 +84,12 @@ variable "iam_access_key_max_age" {
   }
 }
 
+variable "ses_email_identities" {
+  type        = list(string)
+  description = "List of email identities to create the SES identity for."
+  default     = []
+}
+
 variable "ses_group_enabled" {
   type        = bool
   description = "Creates a group with permission to send emails from SES domain"

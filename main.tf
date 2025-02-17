@@ -12,6 +12,12 @@ resource "aws_ses_domain_identity" "ses_domain" {
   domain = var.domain
 }
 
+resource "aws_ses_email_identity" "ses_email_identities" {
+  for_each = var.ses_email_identities
+
+  email = each.value
+}
+
 resource "aws_route53_record" "amazonses_verification_record" {
   count = module.this.enabled && var.verify_domain ? 1 : 0
 
